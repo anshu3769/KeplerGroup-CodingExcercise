@@ -1,13 +1,11 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
-
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure(2) do |config|
   # Every Vagrant development environment requires a box. You can search for
-  # boxes at https://atlas.hashicorp.com/search.
+  # boxes at https://atlas.hashicorp.com/search. The below command will setup
+  # VM for ubuntu 18.04
   config.vm.box = "ubuntu/bionic64"
   # set up network ip and port forwarding
   config.vm.network "forwarded_port", guest: 5000, host: 5001, host_ip: "127.0.0.1"
@@ -45,6 +43,7 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
+  # Remove 3 fom python and pip to install python version 2.
   config.vm.provision "shell", inline: <<-SHELL
     apt-get update
     apt-get install -y git python3 python3-pip python3-dev build-essential
