@@ -39,13 +39,11 @@ This repository contains the code for developing a RESTFUL words application usi
      
     git clone https://github.com/anshu3769/KeplerGroup-CodingExcercise.git
     cd KeplerGroup-CodingExcercise
-    vagrant up
     
-   For the first time,  "vagrant up" command will take sometime to run as it is creating the fully functional 
-   enviroment for your application. The VM is up and running now.
-   
- ## Some things you should know in the Vagrantfile
- 
+    
+ ## Some things to know about the Vagrantfile
+     vi Vagrantfile
+    
      1.  The following line downloads ubuntu-18.04 image for the VM
           config.vm.box = "ubuntu/bionic64"
           
@@ -56,7 +54,23 @@ This repository contains the code for developing a RESTFUL words application usi
           where 5000 is the port on which the application will run on guest machine(VM) and 5070
           is the port on which application will run on host machine(local machine). The application can be 
           accessed through the IP provided in the ip field.
+      3. Version of python set for this virtual machine is 3. The following lines in the file sets this up.
+          apt-get install -y git python3 python3-pip python3-dev build-essential
+          pip3 install -r requirements.txt
    
+    
+ ## Set up the virtual machine
+   Open the Vagrantfile and search for "host" in the the file. Enter a port number(which is not in use )
+   for the host. By default, it is 5001. This port number will also work if this port is free on your machine.
+   Same applies to guest port number. 
+    
+    Now run the command
+    vagrant up
+    
+   When running for the first time,  "vagrant up" command will take sometime to run as it is creating the fully functional 
+   environment for your application. The VM is up and running when the command complete execution.
+   
+ 
    
   ## Login to the VM and run the application
      vagrant ssh
