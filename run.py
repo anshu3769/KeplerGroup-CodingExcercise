@@ -16,6 +16,7 @@ PORT = os.getenv('PORT', '5000')
 ######################################################################
 if __name__ == "__main__":
     print("****************************************")
-    print(" KEPLER GROUP CODING EXCERCISE   SERVICE   RUNNING")
+    print(" KEPLER GROUP CODING EXCERCISE")
+    print("SERVICE IS  RUNNING")
     print("****************************************")
     app.run(host='0.0.0.0', port=int(PORT), debug=DEBUG)
