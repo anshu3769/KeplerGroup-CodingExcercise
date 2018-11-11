@@ -27,7 +27,7 @@ GET INDEX PAGE
 @app.route('/',methods=['GET'])
 def index():
     """ Root URL response """
-    print("Words REST API Service")
+    print("WORDS REST API SERVICE")
     return jsonify(name='Words REST API Service',
                    version='1.0'
                   ), status.HTTP_200_OK
@@ -40,8 +40,8 @@ def index():
 @app.route('/words/randomword', methods=['GET'])
 def get_random_word():
     """
-    This endpoint will return a word randomly selected from the given list of
-    words in the query
+    This endpoint will return a word randomly selected from the 
+    given list of words in the query
 
     """
     print("GET_RANDOM_WORD")
@@ -78,7 +78,7 @@ def get_rhyming_words(word='Kepler'):
     This endpoint will return list of words rhyming with the given
     words as parameter. It will skip the words after the first comma
     if a comma separated list is provided and will return the list of
-    words rhyming with that word.
+    words rhyming with the first word.
 
     """
     print("GET_RHYMING_WORDS")
