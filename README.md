@@ -89,7 +89,7 @@ This repository contains the code for developing a RESTFUL words application usi
      
      Run the following on the browser:
      
-     http://localhost:5090/words/random?input=one,two,three
+   http://localhost:5090/words/random?input=one,two,three
      
      Expected output: 
      
@@ -100,7 +100,7 @@ This repository contains the code for developing a RESTFUL words application usi
      {"randomWord":"three"}
      
      
-     http://localhost:5090/words/rhyming/cat
+   http://localhost:5090/words/rhyming/cat
      
      Expected output:
      
