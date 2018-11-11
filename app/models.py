@@ -42,17 +42,17 @@ class RandomWord:
 
         """
         #Calculate the length of the list
-        string_length = len(words)
+        number_of_words = len(words)
 
-        #Generate a random number in range 0 to string_length-1
-        word_index = random.randint(0,string_length-1)
+        #Generate a random number in range 0 to number_of_words-1
+        word_index = random.randint(0,number_of_words-1)
         return words[word_index]
 
 
 """
-#######################
+#################################################
 Rhyme class
-#######################
+#################################################
 """
 class Rhyme:
 
@@ -65,15 +65,20 @@ class Rhyme:
     def get_rhyming_words(word):
         """ Get the list of words rhyming with given word """
 
-        #The pronouncing package provides the functionality to rhyming
-        #words from the CMU Pronouncing Dictionary
+        #The pronouncing package provides the functionality to get
+        #rhyming words from the CMU Pronouncing Dictionary for a given
+        #word.
         word_list = pronouncing.rhymes(word)
         return word_list
 
     """
     @staticmethod
     def get_rhyming_words(word):
-        #Get the list of words rhyming with given word
+       
+        #This method calls an API which also returns the list 
+        #of rhyming words. One drawback of this method is 
+        #that sometimes API call could fail.
+        
         word_list = []
         URL = "https://api.datamuse.com/words?rel_rhy=" + word
         response = requests.get(url = URL)
