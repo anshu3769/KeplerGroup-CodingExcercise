@@ -20,17 +20,19 @@ This repository contains the code for developing a RESTFUL words application usi
   your application requires everyime you need to run your application on a different machine/envirnment. Vagrant 
   will do that for you. If you dont have it already -  
   
-    * To download virtualbox, please use this link - https://www.virtualbox.org/
-       Click on the downloaded dmg file  and it will walk you through the installation step.
-    * To download vagrant, please use this link - https://www.vagrantup.com/
-       Click on the downloaded dmg file  and it will walk you through the installation step.
+ * To download virtualbox, please use this link - 
+   https://www.virtualbox.org/
+     Click on the downloaded dmg file  and it will walk you through the installation step.
+ * To download vagrant, please use this link -
+   https://www.vagrantup.com/
+      Click on the downloaded dmg file  and it will walk you through the installation step.
        
-       To verify, run the command "vagrant --version". It should display the version of the vagrant
-       installed. 
+  To verify, run the command "vagrant --version". It should display the version of the vagrant
+  installed. 
  
  
-  NOTE - Virtual box must be installed before installing vagrant because vagrant requires virtaulization platform and 
-  virtual box is best suite for it.
+    NOTE - Virtual box must be installed before installing vagrant because vagrant requires virtaulization platform and 
+    virtual box is best suite for it.
  
  
  ## Clone the project
@@ -104,7 +106,7 @@ This repository contains the code for developing a RESTFUL words application usi
      
      Expected output:
      
-     ["arnatt","at","at-    bat","balyeat","bat","batt","batte","begat","bhatt","biernat","blatt","brat","bratt","catt","chat","combat","dat","delatte","deslatte","elat","fat","flat","flatt","gat","gatt","glatt","gnat","gujarat","hat","hatt","hnat","inmarsat","jagt","kat","katt","klatt","krat","kratt","labatt","landsat","lat","mat","matt","matte","mcnatt","nat","non-fat","nonfat","pat","patt","platt","platte","pratt","pratte","prevatt","prevatte","rat","rat-a-tat","ratte","sadat","sarratt","sat","scat","schadt","shatt","slaght","slat","spat","splat","spratt","stat","tat","that","tit-for-tat","tvsat","vat"]
+     ["arnatt","at","at-bat","balyeat","bat","batt","batt,"dat","delatte","deslatte","elat",","hat","hatt","hnat", ....]
      
      
      
