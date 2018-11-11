@@ -77,13 +77,40 @@ This repository contains the code for developing a RESTFUL words application usi
      cd /vagrant
      python3 run.py
  
- You should now be able to see the service running in your browser by going to http://localhost:{PORT} where PORT 
- is the port number provided in the host field in vagrant file(set to 5090 currently). You will see a 
- message about the service which looks something like this:
+ You should now be able to see the service running in your browser by going to http://localhost:5090 or      http://127.0.0.1:5090 where 5090 is the port number provided in the host field in vagrant file(can be changed 
+ if required). You will see a message about the service which looks something like this:
+ 
+    {"info":"Home page for the API",
+     "name":"Words REST API Service",
+     "version":"1.0"}
      
   
-  
-  
+ ## Running the API actions:
+     
+     Run the following on the browser:
+     
+     http://localhost:5090/words/random?input=one,two,three
+     
+     Expected output: 
+     
+     {"randomWord":"one"}
+             or
+     {"randomWord":"two"}
+             or
+     {"randomWord":"three"}
+     
+     
+     http://localhost:5090/words/rhyming/cat
+     
+     Expected output:
+     
+     ["arnatt","at","at-    bat","balyeat","bat","batt","batte","begat","bhatt","biernat","blatt","brat","bratt","catt","chat","combat","dat","delatte","deslatte","elat","fat","flat","flatt","gat","gatt","glatt","gnat","gujarat","hat","hatt","hnat","inmarsat","jagt","kat","katt","klatt","krat","kratt","labatt","landsat","lat","mat","matt","matte","mcnatt","nat","non-fat","nonfat","pat","patt","platt","platte","pratt","pratte","prevatt","prevatte","rat","rat-a-tat","ratte","sadat","sarratt","sat","scat","schadt","shatt","slaght","slat","spat","splat","spratt","stat","tat","that","tit-for-tat","tvsat","vat"]
+     
+     
+     
+     
+     
+    
  
  
        
