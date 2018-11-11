@@ -1,11 +1,11 @@
 """
-KeplerGroup-CodingExcercise Runner
+Kepler Group Coding Excercise
 
 Start the Service
 """
 
 import os
-from app import app
+from app import app,service
 
 # Pull options from environment
 DEBUG = (os.getenv('DEBUG', 'False') == 'True')
