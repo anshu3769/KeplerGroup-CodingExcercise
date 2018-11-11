@@ -8,9 +8,9 @@ This repository contains the code for developing a RESTFUL words application usi
 
 ## Endpoints of the API
 
- *  GET / - Renders the index page
- *  GET /words/randomword?input=<comma sepearted list of words> - Takes list of words and returns a random word out of them
- *  GET /words/rhymingwords/<string:word> - Takes a word and return list of words rhyming with the given word
+ *  GET /words or / - Renders the index page
+ *  GET /words/random?input=<comma sepearted list of words> - Takes list of words and returns a random word out of them
+ *  GET /words/rhyming/<string:word> - Takes a word and return list of words rhyming with the given word
   
 ## Prerequisite for running the application
 
@@ -77,8 +77,8 @@ This repository contains the code for developing a RESTFUL words application usi
      cd /vagrant
      python3 run.py
  
- You should now be able to see the service running in your browser by going to http://localhost:<PORT> where PORT 
- is the port number provided in the host field in vagrant file( described in the above section). You will see a 
+ You should now be able to see the service running in your browser by going to http://localhost:{PORT} where PORT 
+ is the port number provided in the host field in vagrant file(set to 5090 currently). You will see a 
  message about the service which looks something like this:
      
   
