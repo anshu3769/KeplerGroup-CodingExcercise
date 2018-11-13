@@ -102,7 +102,7 @@ echo "\n"
 
 echo "${red}  Case 2: When correct input is given ("who" is given as input)${nc}"
 echo "${bold}Expected output :"
-echo "${normal}\"howay\" "
+echo "${normal}{\"pig_latin_word\":\"howay\"} "
 
 echo "${bold}Actual output:${normal}"
 curl -H "Accept:application/json" "http://localhost:5000/words/pig-latin/who"
