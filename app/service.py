@@ -161,7 +161,7 @@ def get_pig_latin_word(word='Kepler'):
 
     #Call the method from the Rhyme class to get the rhyming words list
     pig_latin_word = PigLatin.get_pig_latin_word(input)
-    return make_response(jsonify(pig_latin_word), status.HTTP_200_OK)
+    return make_response(jsonify(PigLatin.serialize(pig_latin_word)), status.HTTP_200_OK)
 
 
 
