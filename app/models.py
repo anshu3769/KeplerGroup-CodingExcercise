@@ -33,7 +33,7 @@ class RandomWord:
     @staticmethod
     def serialize(word):
         """ Serializes a word into a dictionary """
-        return {"randomWord":word}
+        return {"random_word":word}
 
     @staticmethod
     def get_random_word(words):
@@ -60,7 +60,7 @@ class Rhyme:
     @staticmethod
     def serialize(word):
         """ Serializes a word into a dictionary """
-        return {"word": word}
+        return {"rhyming_word": word}
 
     @staticmethod
     def get_rhyming_words(word):
@@ -75,11 +75,11 @@ class Rhyme:
     """
     @staticmethod
     def get_rhyming_words(word):
-       
-        #This method calls an API which also returns the list 
-        #of rhyming words. One drawback of this method is 
+
+        #This method calls an API which also returns the list
+        #of rhyming words. One drawback of this method is
         #that sometimes API call could fail.
-        
+
         word_list = []
         URL = "https://api.datamuse.com/words?rel_rhy=" + word
         response = requests.get(url = URL)
@@ -87,4 +87,39 @@ class Rhyme:
         for rhyming_word  in data:
             word_list.append(rhyming_word['word'])
         return word_list
+
+
     """
+
+"""
+###############################################
+PigLatin class
+###############################################
+"""
+class PigLatin:
+
+    @staticmethod
+    def serialize(word):
+        """ Serializes a word into a dictionary """
+        return {"pig_latin_word":word}
+
+    @staticmethod
+    def get_pig_latin_word(word):
+        """
+        Return the pig-latin translation of the given word
+
+        """
+        consonant_combination_list = ['sh', 'gl', 'ch', \
+                                      'ph', 'tr', 'br', 'fr', \
+                                      'bl', 'gr', 'st', 'sl', \
+                                      'cl', 'pl', 'fl']
+
+
+        if word[0] in ['a', 'e', 'i', 'o', 'u']:
+            word = word+'ay'
+        elif word[0]+word[1] in consonant_combination_list:
+            word = word[2:]+word[:2]+'ay'
+        else:
+            word = word[1:]+word[0]+'ay'
+
+        return word
