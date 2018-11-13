@@ -63,7 +63,7 @@ This repository contains the code for developing a RESTFUL API using Python Flas
  ## Some things to know about the Vagrantfile
      vi Vagrantfile
     
-     1.  The following line downloads ubuntu-18.04 image for the VM
+      1.  The following line downloads ubuntu-18.04 image for the VM
           config.vm.box = "ubuntu/bionic64"
           
       2. The follwing lines set up network ip and port forwarding
