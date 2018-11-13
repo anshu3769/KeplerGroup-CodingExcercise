@@ -1,18 +1,30 @@
 # KeplerGroup-CodingExcercise
-This repository contains the code for developing a RESTFUL words application using Python Flask. 
+This repository contains the code for developing a RESTFUL API using Python Flask. 
 
-## Functionality provided by the API
 
+## Requirements of the excercise to be fulfilled by the API
+  
+ Functional Requirements- 
  * User provides 2 or more words to the server, and the server randomly returns 1 word
  * User provides 1 English word, and server returns a list of English words that rhyme with that word
+ * User provides 1 English word, and server returns its pig latin translation
+ 
+ Non functional requirements-
+ * The application should be able to run on Ubuntu 18.04.
+ * Code should be written in ptyhon 3+ version.
+ * Setuo instructions to run the code should be provided.
+ * Automated testing of the API should be provided
 
 ## Endpoints of the API
 
  *  GET /words or / - Renders the index page
- *  GET /words/random?input=<comma sepearted list of words> - Takes list of words and returns a random word out of them
- *  GET /words/rhyming/<string:word> - Takes a word and return list of words rhyming with the given word
+ *  GET /words/random?input={comma sepearted list of words} - Takes list of words and returns a random word out of them
+ *  GET /words/rhyming/{string:word} - Takes a word and returns list of words rhyming with the given word
+ *  GET /words/pig-latin/{string:word} - Takes a word and returns its pig latin translation
+ 
+
   
-## Prerequisite for running the application
+## Environment setup to run the application
 
   The easiest way to run this service is to use vagrant and virtual box. It will be a one time setup.
   Vagrant is a developers tool for creating lightweight, reproducible and portable virtual environments via 
@@ -22,9 +34,12 @@ This repository contains the code for developing a RESTFUL words application usi
   
  * To download virtualbox, please use this link - 
    https://www.virtualbox.org/
+   
      Click on the downloaded dmg file  and it will walk you through the installation step.
+     
  * To download vagrant, please use this link -
    https://www.vagrantup.com/
+   
       Click on the downloaded dmg file  and it will walk you through the installation step.
        
   To verify, run the command "vagrant --version". It should display the version of the vagrant
@@ -35,9 +50,11 @@ This repository contains the code for developing a RESTFUL words application usi
     virtual box is best suite for it.
  
  
- ## Clone the project
-   Clone the project on your machine and create your Vagrant VM. Run the following
-   commands to clone the repository and creating virtual machine for the project.
+ 
+ ## Running the application
+   1. Clone the repository
+    Clone the project on your machine and create your Vagrant VM. Run the following
+    commands to clone the repository and creating virtual machine for the project.
      
     git clone https://github.com/anshu3769/KeplerGroup-CodingExcercise.git
     cd KeplerGroup-CodingExcercise
@@ -46,33 +63,29 @@ This repository contains the code for developing a RESTFUL words application usi
  ## Some things to know about the Vagrantfile
      vi Vagrantfile
     
-     1.  The following line downloads ubuntu-18.04 image for the VM
+      1.  The following line downloads ubuntu-18.04 image for the VM
           config.vm.box = "ubuntu/bionic64"
           
       2. The follwing lines set up network ip and port forwarding
           config.vm.network "forwarded_port", guest: 5000, host: 5070, host_ip: "127.0.0.1"
           config.vm.network "private_network", ip: "192.168.33.10"
           
-          where 5000 is the port on which the application will run on guest machine(VM) and 5070
-          is the port on which application will run on host machine(local machine). The application can be 
+          where 5000 is the port on which the application will run on guest machine(VM) and 5090
+          is the port on which application will run on host machine(local machine). You can change these
+          ports based on the availabilty of free ports on your machine. The application can be 
           accessed through the IP provided in the ip field.
-      3. Version of python set for this virtual machine is 3. The following lines in the file sets this up.
+      3. Version of python for this virtual machine is 3. The following lines in the file sets this up.
           apt-get install -y git python3 python3-pip python3-dev build-essential
           pip3 install -r requirements.txt
    
     
  ## Set up the virtual machine
-   Open the Vagrantfile and search for "host" in the the file. Enter a port number(which is not in use )
-   for the host. By default, it is 5001. This port number will also work if this port is free on your machine.
-   Same applies to guest port number. 
-    
-    Now run the command
+    After the ports has been set in the Vagrantfile, run the command
     vagrant up
     
    When running for the first time,  "vagrant up" command will take sometime to run as it is creating the fully functional 
    environment for your application. The VM is up and running when the command complete execution.
    
- 
    
   ## Login to the VM and run the application
      vagrant ssh
@@ -95,11 +108,11 @@ This repository contains the code for developing a RESTFUL words application usi
      
      Expected output: 
      
-     {"randomWord":"one"}
+     {"random-word":"one"}
              or
-     {"randomWord":"two"}
+     {"random-word":"two"}
              or
-     {"randomWord":"three"}
+     {"random-word":"three"}
      
      
    http://localhost:5090/words/rhyming/cat
@@ -108,7 +121,17 @@ This repository contains the code for developing a RESTFUL words application usi
      
      ["arnatt","at","at-bat","balyeat","bat","batt","batt,"dat","delatte","deslatte","elat",","hat","hatt","hnat", ....]
      
+  
+   http://localhost:5090/words/pig-latin/who
+   
+     {pig-latin-word: "howay"}
      
+     
+     
+ ## Running the tests on
+ 
+    To run the tests, please go to the tests/ directory and follow the steps provided in the README.md file present in 
+    tests directory.
      
      
      
