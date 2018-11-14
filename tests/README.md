@@ -11,7 +11,7 @@
      chmod 755 tests.sh
    
   ## 3. Run the tests
-      sh tests.sh
+      bash ./tests.sh
       
       
  ## NOTE
