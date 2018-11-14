@@ -11,8 +11,8 @@ This repository contains the code for developing a RESTFUL API using Python Flas
  
  Non functional requirements-
  * The application should be able to run on Ubuntu 18.04.
- * Code should be written in ptyhon 3+ version.
- * Setuo instructions to run the code should be provided.
+ * Code should be written in python 3+ version.
+ * Setup instructions to run the code should be provided.
  * Automated testing of the API should be provided
 
 ## Endpoints of the API
