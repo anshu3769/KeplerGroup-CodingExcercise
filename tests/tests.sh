@@ -15,7 +15,10 @@ total_test_cases=0
 #Count of passed test case
 passed_test_cases=0
 
+
+############################################################
 #Test the home index of the API
+############################################################
 echo "${bold}T E S T I N G   T H E   A P I   H O M E   I N D E X ${normal}"
 echo "${bold} Expected output:${normal} "
 expected="{\"info\":\"Home page for the API\",\"name\":\"Words REST API Service\",\"version\":\"1.0\"}"
@@ -26,18 +29,21 @@ echo "${actual}"
 total_test_cases=$((total_test_cases+1))
 
 if [ "${expected}" == "${actual}" ]; then
+	echo "TEST 1"
 	passed_test_cases=$((passed_test_cases+1))
 fi
 
 echo ""
 echo ""
 
-
+############################################################
 #Test the random word generation functionality of the API
+############################################################
 #Case 1: When no input is given to the API
 #Case 2: When no of words in the list are less than 2
 #Case 3: When no of words in the list are more than 20
-#Case 3: When correct input is given
+#Case 4: When correct input is given
+#Case 5: When length of any word is greater than 45
 
 echo "${bold}T E S T I N G   T H E   R A N D O M   W O R D   G E N E R A T I O N   F U N C T I O N A L I T Y ${normal}"
 echo "${red}  Case 1: When no input is given to the api${normal}"
@@ -52,12 +58,13 @@ echo "${actual}"
 total_test_cases=$((total_test_cases+1))
 
 if [ "${expected}" == "${actual}" ]; then
+	echo "TEST 2"
 	passed_test_cases=$((passed_test_cases+1))
 fi
 
 echo ""
 
-echo "${red}  Case 2: When no of words in the list are less than 2 ${normal}"
+echo "${red}  Case 2: When number of words in the list are less than 2 ${normal}"
 echo "${bold}Expected output :"
 echo "${normal}{\"error\":\"Bad Request\",\"message\":\"400 Bad Request: Length of the list is either less than 2 or greater than 20\",\"status\":400}"
 expected="{\"error\":\"Bad Request\",\"message\":\"400 Bad Request: Length of the list is either less than 2 or greater than 20\",\"status\":400}"
@@ -69,12 +76,13 @@ echo "${actual}"
 total_test_cases=$((total_test_cases+1))
 
 if [ "${expected}" == "${actual}" ]; then
+	echo "TEST 3"
 	passed_test_cases=$((passed_test_cases+1))
 fi
 
 echo ""
 
-echo "${red}  Case 3: When no of words in the list are more than 20 ${normal}"
+echo "${red}  Case 3: When number of words in the list are more than 20 ${normal}"
 echo "${bold}Expected output :"
 echo "${normal}{\"error\":\"Bad Request\",\"message\":\"400 Bad Request: Length of the list is either less than 2 or greater than 20\",\"status\":400}"
 expected="{\"error\":\"Bad Request\",\"message\":\"400 Bad Request: Length of the list is either less than 2 or greater than 20\",\"status\":400}"
@@ -85,6 +93,7 @@ echo "${actual}"
 total_test_cases=$((total_test_cases+1))
 
 if [ "${expected}" == "${actual}" ]; then
+	echo "TEST 4"
 	passed_test_cases=$((passed_test_cases+1))
 fi
 
@@ -103,15 +112,36 @@ echo "${actual}"
 total_test_cases=$((total_test_cases+1))
 
 if [ "${expected_1}" == "${actual}" ] || [ "${expected_2}" == "${actual}" ] || [ "${expected_3}" == "${actual}" ]; then
+	echo "TEST 5"
+	passed_test_cases=$((passed_test_cases+1))
+fi
+
+echo ""
+
+echo "${red}  Case 5: When length of any word in the list is greater than 45 ${normal}"
+echo "${bold}Expected output :${normal}"
+echo "{\"error\":\"Bad Request\",\"message\":\"400 Bad Request: Length of one or more words is greater than 45\",\"status\":400}"
+expected="{\"error\":\"Bad Request\",\"message\":\"400 Bad Request: Length of one or more words is greater than 45\",\"status\":400}"
+
+echo "${bold}Actual output:${normal}"
+actual=$(curl -s  -H "Accept:application/json" "http://localhost:${PORT}/words/random?input=one,twoeeeeeeeeeeeeeeeeeeanananaeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+echo "${actual}"
+total_test_cases=$((total_test_cases+1))
+
+if [ "${expected}" == "${actual}" ]; then
+	echo "TEST 6"
 	passed_test_cases=$((passed_test_cases+1))
 fi
 
 echo ""
 echo ""
 
+############################################################
 #Test the getting rhyming words functionality of the API
+############################################################
 #Case 1: When the word is not a valid english word
-#Case 2: When correct input is provided
+#Case 2: When length of the word is greater than 45
+#Case 3: When correct input is provided
 
 echo "${bold}T E S T I N G   T H E   R H Y M I N G   W O R D S   F U N C T I O N A L I T Y ${normal}"
 echo "${red}  Case 1: When the word is not a valid english word ${normal}"
@@ -125,12 +155,31 @@ echo "${actual}"
 total_test_cases=$((total_test_cases+1))
 
 if [ "${expected}" == "${actual}" ]; then
+	echo "TEST 7"
 	passed_test_cases=$((passed_test_cases+1))
 fi
 
 echo ""
 
-echo "${red}  Case 2: When correct input is given ("earth" is given as input)${normal}"
+
+echo "${red}  Case 2: When length of the word is greater than 45 ${normal}"
+echo "${bold}Expected output :${normal}"
+echo "{\"error\":\"Bad Request\",\"message\":\"400 Bad Request: Length of one or more words is greater than 45\",\"status\":400}"
+expected="{\"error\":\"Bad Request\",\"message\":\"400 Bad Request: Length of one or more words is greater than 45\",\"status\":400}"
+
+echo "${bold}Actual output:${normal}"
+actual=$(curl -s  -H "Accept:application/json" "http://localhost:${PORT}/words/rhyming/twoeeeeeeeeeeeeeeeeeeeeeeeeeeeeabanaeeeeeeeeeeeeeeeeeeeeeeeee")
+echo "${actual}"
+total_test_cases=$((total_test_cases+1))
+
+if [ "${expected}" == "${actual}" ]; then
+	echo "TEST 8"
+	passed_test_cases=$((passed_test_cases+1))
+fi
+
+echo ""
+
+echo "${red}  Case 3: When correct input is given ("earth" is given as input)${normal}"
 echo "${bold}Expected output :"
 echo "${normal}[\"berth\",\"birth\",\"dearth\",\"firth\",\"fuerth\",\"furth\",\"gerth\",\"girth\",\"hirth\",\"kerth\",\"kurth\",\"mirth\",\"perth\",\"rebirth\",\"unearth\",\"wentworth\",\"werth\",\"wirth\",\"worth\",\"wurth\"]"
 expected="[\"berth\",\"birth\",\"dearth\",\"firth\",\"fuerth\",\"furth\",\"gerth\",\"girth\",\"hirth\",\"kerth\",\"kurth\",\"mirth\",\"perth\",\"rebirth\",\"unearth\",\"wentworth\",\"werth\",\"wirth\",\"worth\",\"wurth\"]"
@@ -141,15 +190,19 @@ echo "${actual}"
 total_test_cases=$((total_test_cases+1))
 
 if [ "${expected}" == "${actual}" ]; then
+	echo "TEST 9"
 	passed_test_cases=$((passed_test_cases+1))
 fi
 
 echo ""
 echo ""
 
+###############################################################
 #Test the pig-latin word translation  functionality of the API
+###############################################################
 #Case 1: When the word is not a valid english word
-#Case 2: When correct input is given
+#Case 2: When length of the word is greater than 45
+#Case 3: When correct input is given
 
 echo "${bold}T E S T I N G   T H E   P I G   L A T I N   T R A N S L A T I O N     F U N C T I O N A L I T Y ${normal}"
 echo "${red}  Case 1: When the word is not a valid english word ${normal}"
@@ -162,12 +215,31 @@ echo "${actual}"
 total_test_cases=$((total_test_cases+1))
 
 if [ "${expected}" == "${actual}" ]; then
+	echo "TEST 10"
 	passed_test_cases=$((passed_test_cases+1))
 fi
 
 echo ""
 
-echo "${red}  Case 2: When correct input is given (who is given as input)${normal}"
+
+echo "${red}  Case 2: When length of the word is greater than 45 ${normal}"
+echo "${bold}Expected output :${normal}"
+echo "{\"error\":\"Bad Request\",\"message\":\"400 Bad Request: Length of one or more words is greater than 45\",\"status\":400}"
+expected="{\"error\":\"Bad Request\",\"message\":\"400 Bad Request: Length of one or more words is greater than 45\",\"status\":400}"
+
+echo "${bold}Actual output:${normal}"
+actual=$(curl -s  -H "Accept:application/json" "http://localhost:${PORT}/words/pig-latin/twoeeeeeeeeeeeeeeeeeeeeeeeeeeeeabanaeeeeeeeeeeeeeeeeeeeeeeeee")
+echo "${actual}"
+total_test_cases=$((total_test_cases+1))
+
+if [ "${expected}" == "${actual}" ]; then
+	echo "TEST 11"
+	passed_test_cases=$((passed_test_cases+1))
+fi
+
+echo ""
+
+echo "${red}  Case 3: When correct input is given (who is given as input)${normal}"
 echo "${bold}Expected output :"
 echo "${normal}{\"pig_latin_word\":\"howay\"}"
 expected="{\"pig_latin_word\":\"howay\"}"
@@ -178,6 +250,7 @@ echo "${actual}"
 total_test_cases=$((total_test_cases+1))
 
 if [ "${expected}" == "${actual}" ]; then
+	echo "TEST 12"
 	passed_test_cases=$((passed_test_cases+1))
 fi
 
