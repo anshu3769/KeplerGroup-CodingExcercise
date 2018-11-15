@@ -14,6 +14,32 @@ This repository contains the code for developing a RESTFUL API using Python Flas
  * Code should be written in python 3+ version.
  * Setup instructions to run the code should be provided.
  * Automated testing of the API should be provided
+ 
+ 
+ ## Directory Structure
+ 
+ ```bash
+├── app
+│   ├──__init__.py
+│   ├── service.py
+│   ├── models.py
+│     
+├── tests
+|   ├── README.md
+│   ├── tests.sh
+│   
+├── README.md
+├── Vagrantfile
+├── requirments.txt
+├── run.py
+├── README.md
+|
+├── .github
+│    ├── BUG_TEMPLATE.md
+│    ├── ISSUE_TEMPLATE.md
+│
+└── .gitignore
+```
 
 ## Endpoints of the API
 
