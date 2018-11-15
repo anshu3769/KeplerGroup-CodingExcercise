@@ -1,10 +1,10 @@
 #  Code documentation 
-  This document was created using pythin docstring. Below are the details when help command is 
-  run on the modules of the project.
+  This document was created using python docstring. Below are the details when help command is 
+  run on the modules of the project. 
   
   
 ## 1. run.py
-   DESCRIPTION
+   ## DESCRIPTION
     Application starts running from this module.
     It also initializes logging for the application.  
     As a user, you will be running "python3 run.py"
