@@ -4,7 +4,7 @@
   
   
 ## 1. run.py
-   ## DESCRIPTION
+   ## Description
     Application starts running from this module.
     It also initializes logging for the application.  
     As a user, you will be running "python3 run.py"
@@ -12,18 +12,18 @@
     
 ## 2. app
 
-   ## DESCRIPTION
+   ## Description
     Package: app
     Package for the application models and services.
     It contains the definition of the "words" flask API.
 
-   ## PACKAGE CONTENTS
+   ## Package Contents
     models
     service
 
     
 ## 3. app/models.py
-   ## DESCRIPTION
+   ## Description
     
     --------------------------
     Model class for Words API
@@ -140,7 +140,7 @@
     
    ## 4. app/service.py
     
-   ## DESCRIPTION
+   ## Description
     Paths:
     -----
     GET /words/random?input=<comma sepearted list of words>  - Takes list of words and returns a random word out of them
