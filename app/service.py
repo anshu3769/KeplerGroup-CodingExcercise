@@ -1,4 +1,5 @@
 """
+
 Kepler Group Coding Excercise
 
 Paths:
@@ -68,7 +69,7 @@ GET INDEX PAGE
 @app.route('/',methods=['GET'])
 @app.route('/words',methods=['GET'])
 def index():
-    """ Root URL response """
+    """Get the root URL response"""
     app.logger.info("WORDS REST API SERVICE")
     return jsonify(name='Words REST API Service',\
                    version='1.0',\
@@ -82,10 +83,20 @@ def index():
 """
 @app.route('/words/random', methods=['GET'])
 def get_random_word():
-    """
-    This endpoint will return a word randomly selected from the
-    given list of words in the query
+    """ This endpoint  returns a word randomly selected from the
+    given list of words in the query.
 
+    The API call "/words/random?input=<comma sepearted list of words>" is 
+    routed to this method.
+    Currently,the API requires input words to be seperated by commas.
+    More flexibility for the delimiters can be added later.
+
+    NOTE - Before calling the function from the RandomWord class in models 
+    module, follwing checks are performed - 
+    1. If length of input list is less than 2 or greater than 20, abort 
+    the request.
+    2. If length of any word in the list is greater than 45, abort the 
+    request because longest word in Oxford dictionary is of length 45. 
     """
     app.logger.info("Processing random word request.")
 
@@ -102,8 +113,9 @@ def get_random_word():
 
     # Abort the request if length of any word is greater than 45.
     #Longest word in Oxford dictionary is of length 45.
-    if not valid_length_of_words(words):
-        abort(400,'Length of one or more words is greater than 45')
+    for w in words:
+        if not valid_length_of_word(w):
+            abort(400,'Length of one or more words is greater than 45')
 
     #Call the method from the RandomWord class to get the random word
     word = RandomWord.get_random_word(words)
@@ -119,12 +131,21 @@ def get_random_word():
 """
 @app.route('/words/rhyming/<string:word>', methods=['GET'])
 def get_rhyming_words(word='Kepler'):
-    """
-    This endpoint will return list of words rhyming with the given
-    words as parameter. It will skip the words after the first comma
-    if a comma separated list is provided and will return the list of
-    words rhyming with the first word.
+    """ This endpoint will return list of words rhyming with the given
+    words as parameter.
 
+
+    It will skip the words after the first comma if a comma separated
+    list is provided.
+    The API call "/words/rhyming/{word}" is routed to this
+    method where {word} is any english word.
+
+    NOTE - Before calling the function from Rhyme class in models module, 
+    following checks are performed -
+    1. If the word is not a proper English word (contains any non-alphabet
+     character), abort the request.
+    2. If length of the word is greater than 45, abort the
+    request because longest word in Oxford dictionary is of length 45.
     """
     app.logger.info("Processing rhyming words request.")
 
@@ -134,6 +155,10 @@ def get_rhyming_words(word='Kepler'):
     #Abort if the the word is not a valid English word
     if valid_english_word(input) is False:
         abort(400,'The word is not a valid english word')
+    
+    # Abort the request if length of the word is greater than 45
+    if not valid_length_of_word(input):
+        abort(400,'Length of one or more words is greater than 45')
 
     #Call the method from the Rhyme class to get the rhyming words list
     rhyming_words = Rhyme.get_rhyming_words(input)
@@ -147,9 +172,19 @@ def get_rhyming_words(word='Kepler'):
 """
 @app.route('/words/pig-latin/<string:word>', methods=['GET'])
 def get_pig_latin_word(word='Kepler'):
+    """This endpoint will return pig-latin translation of the given word.
+    
+    The API call "/words/pig-latin/{word}" is routed to this
+    method where {word} is any english word.
+
+    NOTE - Before calling the function from PigLatin class in models module,
+    following checks are performed -
+    1. If the word is not a proper English word (contains any non-alphabet
+     character), abort the request.
+    2. If length of the word is greater than 45, abort the
+    request because longest word in Oxford dictionary is of length 45.
     """
-    This endpoint will return pig-latin translation of the given word.
-    """
+    
     app.logger.info("Processing pig-latin word request.")
 
     #Get the first word if a comma seperated list is provided
@@ -158,6 +193,10 @@ def get_pig_latin_word(word='Kepler'):
     #Abort if the the word is not a valid English word
     if valid_english_word(input) is False:
         abort(400,'The word is not a valid english word')
+
+    # Abort the request if length of the word is greater than 45
+    if not valid_length_of_word(input):
+        abort(400,'Length of one or more words is greater than 45')
 
     #Call the method from the Rhyme class to get the rhyming words list
     pig_latin_word = PigLatin.get_pig_latin_word(input)
@@ -171,11 +210,11 @@ def get_pig_latin_word(word='Kepler'):
 ######################################################################
 """
 @app.route('/words/rhyming/', methods=['GET'])
-def get_rhyming_words_empty():
+def get_rhyming_words_index():
     """
+
     This endpoint will return a response asking the user to provide
     input word.
-
     """
     app.logger.info("Rhyming words index.")
 
@@ -192,7 +231,7 @@ def get_rhyming_words_empty():
 """
 
 def initialize_logging(log_level=logging.INFO):
-    """ Initialized the default logging to STDOUT """
+    """ Initialize the default logging to STDOUT """
     if not app.debug:
         print('Setting up logging...')
 
@@ -215,10 +254,10 @@ def initialize_logging(log_level=logging.INFO):
         app.logger.info('Logging handler established.')
 
 
-def valid_length_of_words(word_list = []):
-    """Validate if the words in the list have valid lengths"""
-    for w in word_list:
-        if len(w) > 45:
+def valid_length_of_word(word):
+    """Validate if the word has valid length"""
+    if word:
+        if len(word) > 45:
             return False;
     # In all other cases, the function returns true
     return True
@@ -226,8 +265,8 @@ def valid_length_of_words(word_list = []):
 
 def valid_english_word(word):
     """Validate if the word is a English word.
-    The check is on the characters of the word.
-    It must contain just alphabets from a-z or A-Z
-    and nothing else.
+    
+    The check is on the characters of the word.It must contain alphabets just 
+    from a-z or A-Z and nothing else.
     """
     return word.isalpha()
