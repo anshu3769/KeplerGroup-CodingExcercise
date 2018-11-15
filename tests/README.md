@@ -1,9 +1,9 @@
 
-## Step to run the tests on the API
+## Steps to run the tests on the API
   The script tests.sh will run the basic tests on the API. Follow the steps to run the tests.
    
    
-  ## 1. Once your application is up and running, go to the directory tests/ on VM. The complete path would be 
+  ## 1. Once your application is up and running, go to the directory tests/ (on VM). The complete path would be 
   ##   /vagrant/tests. Assuming you are already in /vagrant directory as you have your application running - 
      cd tests/
        
