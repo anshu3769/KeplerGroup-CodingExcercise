@@ -27,7 +27,10 @@ This repository contains the code for developing a RESTFUL API using Python Flas
 ├── tests
 |   ├── README.md
 │   ├── tests.sh
-│   
+│  
+├── doc
+|   ├── README.md
+│
 ├── README.md
 ├── Vagrantfile
 ├── requirments.txt
