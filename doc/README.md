@@ -40,12 +40,12 @@
     In future, if persistence is required to be added to the model
     ,use this file to do the same.
 
-    CLASSES
+   ## CLASSES
         PigLatin
         RandomWord
         Rhyme
     
-    class PigLatin(builtins.object)
+   ## class PigLatin(builtins.object)
      |  PigLatin class contains two method - 
      |  
      |  1. serialize - Serialize a word into a dictionary
@@ -85,7 +85,7 @@
      |  ----------------------------------------------------------------------
      | 
     
-    class RandomWord(builtins.object)
+   ## class RandomWord(builtins.object)
      |  RandomWord class contains two methods.
      |  
      |  1. serialize - Serialize a word into a dictionary
@@ -106,7 +106,7 @@
      |      return value - A dictionary with key/value pair for the word
        ----------------------------------------------------------------------
      
-     class Rhyme(builtins.object)
+   ## class Rhyme(builtins.object)
      |  Rhyme class contains two methods -
      |  
      |  1. serialize - Serialize a word into a dictionary
@@ -148,7 +148,7 @@
     GET /words/pig-latin/{word} - Takes a word and returns its pig-latin translation
     -----
 
-    FUNCTIONS
+   ## FUNCTIONS
     bad_request(error)
         Handles bad requests with 400_BAD_REQUEST
     
