@@ -3,8 +3,12 @@
   The script tests.sh will run the basic tests on the API. Follow the steps to run the tests.
    
    
-  ## 1. Once your application is up and running, go to the directory tests/ (on VM). The complete path would be 
-  ##   /vagrant/tests. Assuming you are already in /vagrant directory as you have your application running - 
+  ## 1. Once your application is up and running, go to the directory tests/ (on VM). 
+   On another terminal/shell, from the repo's home directory
+  i.e. KeplerGroup-CodingExcercise/, execute the following commands to go the VM- 
+ 
+     vagrant ssh
+     cd /vagrant
      cd tests/
        
   ## 2. Give execute permissions to the script.
