@@ -40,7 +40,7 @@
     In future, if persistence is required to be added to the model
     ,use this file to do the same.
 
-   ## CLASSES
+   ## Classes
         PigLatin
         RandomWord
         Rhyme
@@ -148,11 +148,11 @@
     GET /words/pig-latin/{word} - Takes a word and returns its pig-latin translation
     -----
 
-   ## FUNCTIONS
-    bad_request(error)
+   ## Functions
+   ### bad_request(error)
         Handles bad requests with 400_BAD_REQUEST
     
-    get_pig_latin_word(word='Kepler')
+   ### get_pig_latin_word(word='Kepler')
         This endpoint will return pig-latin translation of the given word.
         
         The API call "/words/pig-latin/{word}" is routed to this
@@ -165,7 +165,7 @@
         2. If length of the word is greater than 45, abort the
         request because longest word in Oxford dictionary is of length 45.
     
-    get_random_word()
+   ### get_random_word()
         This endpoint  returns a word randomly selected from the
         given list of words in the query.
         
@@ -181,7 +181,7 @@
         2. If length of any word in the list is greater than 45, abort the 
         request because longest word in Oxford dictionary is of length 45.
     
-    get_rhyming_words(word='Kepler')
+   ### get_rhyming_words(word='Kepler')
         This endpoint will return list of words rhyming with the given
         words as parameter.
         
@@ -198,29 +198,29 @@
         2. If length of the word is greater than 45, abort the
         request because longest word in Oxford dictionary is of length 45.
     
-    get_rhyming_words_index()
+   ### get_rhyming_words_index()
         This endpoint will return a response asking the user to provide
         input word.
     
-    index()
+   ### index()
         Get the root URL response
     
-    initialize_logging(log_level=20)
+   ### initialize_logging(log_level=20)
         Initialize the default logging to STDOUT
     
-    internal_server_error(error)
+   ### internal_server_error(error)
         Handles unexpected server error with 500_SERVER_ERROR
     
-    not_found(error)
+   ### not_found(error)
         Handles resources not found with 404_NOT_FOUND
     
-    valid_english_word(word)
+   ### valid_english_word(word)
         Validate if the word is a English word.
         
         The check is on the characters of the word.It must contain alphabets just 
         from a-z or A-Z and nothing else.
     
-    valid_length_of_word(word)
+   ### valid_length_of_word(word)
         Validate if the word has valid length
         
 
