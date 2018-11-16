@@ -107,7 +107,7 @@ expected_2="{\"random_word\":\"two\"}"
 expecter_3="{\"random_word\":\"three\"}"
 
 echo "${bold}Actual output:${normal}"
-actual=$(curl -s  -H "Accept:application/json" "http://localhost:${PORT}/words/random?input=one,two,three")
+actual=$(curl -s  -H "Accept:application/json" "http://localhost:${PORT}/words/random?input=one,two")
 echo "${actual}"
 total_test_cases=$((total_test_cases+1))
 
