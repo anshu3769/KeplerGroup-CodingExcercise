@@ -35,7 +35,6 @@ This repository contains the code for developing a RESTFUL API using Python Flas
 ├── Vagrantfile
 ├── requirments.txt
 ├── run.py
-├── README.md
 |
 ├── .github
 │    ├── BUG_TEMPLATE.md
